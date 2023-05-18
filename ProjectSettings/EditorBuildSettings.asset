@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapScene.unity
     guid: 4734c28ab2bebc4418eeb75afbe84852
-  - enabled: 1
-    path: Assets/Scenes/ListGraff.unity
-    guid: 48e1c834fb0371445b3d78feb0c6a304
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 16382bf1b36fa2a4cae12f326db1bfce, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9c957ddc2d162494e86945d12e7c058e, type: 2}
