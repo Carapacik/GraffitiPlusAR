@@ -1,31 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class PenManager : MonoBehaviour
 {
-    public static bool drawingOnSpace = false;
-    GameObject button;
-    GameObject button2;
+    public static bool DrawingOnSpace;
     public GameObject spacePenPoint;
+    private GameObject _button;
+    private GameObject _button2;
 
     public void DrawOnSpace()
     {
-        drawingOnSpace = true;
+        DrawingOnSpace = true;
 
-        button = GameObject.Find("ButtonDraw");
-        button.SetActive(false);
+        _button = GameObject.Find("ButtonDraw");
+        _button.SetActive(false);
     }
 
     public void DrawOffSpace()
     {
-        drawingOnSpace = false;
+        DrawingOnSpace = false;
 
-        button2 = GameObject.Find("ButtonDraw2");
-        button2.SetActive(false);
+        _button2 = GameObject.Find("ButtonDraw2");
+        _button2.SetActive(false);
 
-        button.SetActive(true);
-        button2.SetActive(true);
+        _button.SetActive(true);
+        _button2.SetActive(true);
     }
 }

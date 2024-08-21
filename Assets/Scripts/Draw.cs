@@ -1,13 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Draw : MonoBehaviour
 {
+    public static bool DrawingOnSpace = false;
+    public static bool Drawing;
     public GameObject currentStroke;
     public List<GameObject> currentStrokes;
     public Color color;
-    public static bool drawingOnSpace = false;
     public GameObject buttonDraw;
     public GameObject buttonOffSpace;
     public GameObject buttonRed;
@@ -19,13 +19,12 @@ public class Draw : MonoBehaviour
     public GameObject spacePenPoint;
     public GameObject stroke;
     public bool mouseLookTesting;
-    public static bool drawing = false;
 
-    private float pitch = 0;
-    private float yaw = 0;
+    private float _pitch;
+    private float _yaw;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         spacePenPoint.SetActive(false);
         buttonDraw = GameObject.Find("ButtonDraw");
@@ -47,36 +46,33 @@ public class Draw : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (mouseLookTesting)
         {
-            yaw += 2 * Input.GetAxis("Mouse X");
-            pitch -= 2 * Input.GetAxis("Mouse Y");
-            transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
+            _yaw += 2 * Input.GetAxis("Mouse X");
+            _pitch -= 2 * Input.GetAxis("Mouse Y");
+            transform.eulerAngles = new Vector3(_pitch, _yaw, 0.0f);
         }
 
-        if (PenManager.drawingOnSpace)
-        {
-            spacePenPoint.SetActive(true);
-        }
+        if (PenManager.DrawingOnSpace) spacePenPoint.SetActive(true);
     }
 
     public void StartStroke()
     {
-        drawing = true;
+        Drawing = true;
         currentStroke = Instantiate(stroke, spacePenPoint.transform.position, spacePenPoint.transform.rotation);
         currentStrokes.Add(currentStroke);
     }
 
     public void EndStroke()
     {
-        drawing = false;
+        Drawing = false;
     }
 
     public void DrawOnSpace()
     {
-        drawing = true;
+        Drawing = true;
 
         buttonDraw.SetActive(false);
 
@@ -86,7 +82,7 @@ public class Draw : MonoBehaviour
 
     public void DrawOffSpace()
     {
-        drawing = false;
+        Drawing = false;
 
         buttonOffSpace.SetActive(false);
 
@@ -94,7 +90,7 @@ public class Draw : MonoBehaviour
         spacePenPoint.SetActive(false);
     }
 
-    public void ColorVisib()
+    public void ColorVisible()
     {
         buttonRed.SetActive(true);
         buttonBlue.SetActive(true);
@@ -163,12 +159,8 @@ public class Draw : MonoBehaviour
         stroke.GetComponent<Renderer>().sharedMaterial.color = new Color(0, 0, 0);
     }
 
-    public void DeletLine()
+    public void DeleteLine()
     {
-        foreach (GameObject a in currentStrokes)
-        {
-            Destroy(a);
-        }
-        
+        foreach (var a in currentStrokes) Destroy(a);
     }
 }

@@ -1319,7 +1319,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 951857461}
         m_TargetAssemblyTypeName: Draw, Assembly-CSharp
-        m_MethodName: ColorVisib
+        m_MethodName: ColorVisible
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2248,7 +2248,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 951857461}
         m_TargetAssemblyTypeName: Draw, Assembly-CSharp
-        m_MethodName: DeletLine
+        m_MethodName: DeleteLine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
